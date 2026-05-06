@@ -56,20 +56,22 @@ def quadrado_verde():
         robo.atuador.movimento.parar()
         
         if cor_c == "VERDE" and cor_d != "VERDE":
+            robo.atuador.movimento.mover(sentido="frente", cm=5, potencia=30)
             robo.atuador.movimento.girar(sentido="esquerda", graus=45, potencia=25)
             while True:
                 d = robo.sensor.cor.reflexao(Port.D)
+                robo.atuador.movimento.girar(sentido="esquerda", graus=10, potencia=25)
                 if d < 40:
                     return seguir_linha()
-                robo.atuador.movimento.girar(sentido="esquerda", graus=10, potencia=25)
         
         elif cor_d == "VERDE" and cor_c != "VERDE":
+            robo.atuador.movimento.mover(sentido="frente", cm=5, potencia=30)
             robo.atuador.movimento.girar(sentido="direita", graus=45, potencia=25)
             while True:
                 c = robo.sensor.cor.reflexao(Port.C)
+                robo.atuador.movimento.girar(sentido="direita", graus=15, potencia=25)
                 if c < 40:
-                    return seguir_linha()
-                robo.atuador.movimento.girar(sentido="direita", graus=15, potencia=25)               
+                    return seguir_linha()               
         
         elif cor_c == "VERDE" and cor_d == "VERDE":
             robo.atuador.movimento.girar(sentido="direita", graus=180, potencia=25)
